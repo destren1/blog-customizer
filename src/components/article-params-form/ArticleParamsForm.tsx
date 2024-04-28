@@ -48,13 +48,21 @@ export const ArticleParamsForm = ({ setPageData }: ArticleParamsFormProps) => {
 		setArticleState(defaultArticleState);
 	};
 
+	const isInsideSelect = (node: Node): boolean => {
+		if (node.nodeName === 'LI') return true;
+		if (node.parentNode) {
+			return isInsideSelect(node.parentNode);
+		}
+		return false;
+	};
+
 	const handleClickOutsideClose = (evt: MouseEvent) => {
 		const targetNode = evt.target as Node;
 		if (
 			isOpen &&
 			rootRef.current &&
-			!rootRef.current.contains(evt.target as Node) &&
-			targetNode.nodeName !== 'LI'
+			!rootRef.current.contains(targetNode) &&
+			!isInsideSelect(targetNode)
 		) {
 			handleToggleSideBarState();
 		}
