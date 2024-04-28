@@ -20,17 +20,17 @@ import styles from './ArticleParamsForm.module.scss';
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 
 interface ArticleParamsFormProps {
-	isOpen: boolean;
-	toggleSideBar: () => void;
 	setPageData: (articleState: ArticleStateType) => void;
 }
 
-export const ArticleParamsForm = ({
-	isOpen,
-	toggleSideBar,
-	setPageData,
-}: ArticleParamsFormProps) => {
+export const ArticleParamsForm = ({ setPageData }: ArticleParamsFormProps) => {
 	const rootRef = useRef<HTMLDivElement | null>(null);
+
+	const [isOpen, setIsOpen] = useState(false);
+
+	const handleToggleSideBarState = (): void => {
+		setIsOpen(!isOpen);
+	};
 
 	const [articleState, setArticleState] = useState(defaultArticleState);
 
@@ -56,13 +56,13 @@ export const ArticleParamsForm = ({
 			!rootRef.current.contains(evt.target as Node) &&
 			targetNode.nodeName !== 'LI'
 		) {
-			toggleSideBar();
+			handleToggleSideBarState();
 		}
 	};
 
 	const handleClickEscClose = (evt: KeyboardEvent) => {
 		if (isOpen && evt.key === 'Escape') {
-			toggleSideBar();
+			handleToggleSideBarState();
 		}
 	};
 
@@ -79,7 +79,7 @@ export const ArticleParamsForm = ({
 	return (
 		<>
 			<div ref={rootRef}>
-				<ArrowButton isOpen={isOpen} toggleSideBar={toggleSideBar} />
+				<ArrowButton isOpen={isOpen} toggleSideBar={handleToggleSideBarState} />
 				<aside
 					className={clsx({
 						[styles.container]: true,
