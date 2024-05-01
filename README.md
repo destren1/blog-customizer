@@ -4,9 +4,9 @@
 
 <p align="Left">Веб-страница, где вы можете персонализировать внешний вид контента, изменяя шрифты, цвета фона, текста и другие параметры, делая сайт уникальным и запоминающимся.</p>
 
-<a  href="" target="_blank" align="center"><img src="./src/images/blog-custom-gif.gif" width="100%" alt="Гифка с обзором сайта"></a>
+<a  href="https://destren1.github.io/blog-customizer/" target="_blank" align="center"><img src="./src/images/blog-custom-gif.gif" width="100%" alt="Гифка с обзором сайта"></a>
 
-[Открыть в браузере]()
+[Открыть в браузере](https://destren1.github.io/blog-customizer/)
 
 ## Функционал:
 
